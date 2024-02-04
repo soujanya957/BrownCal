@@ -75,8 +75,8 @@ def enter_login_details(driver, username, password):
 # Example usage
 website_url = "https://cab.brown.edu/"
 
-login_username = "yaouf"
-login_password = "Mecanique12@"
+login_username = ""  # user input
+login_password = ""  # user password
 
 # Start a new instance of Chrome web browser
 driver = webdriver.Chrome()
