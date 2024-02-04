@@ -9,6 +9,44 @@
       <li>{{result.start.date}}{% if result.end.date %}-{% endif%}{{result.end.date}}: {{result.summary}}</li>
       {% endfor %}
     </ul>
-   
+
+    <form action="{% url 'calendar' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+          <input autofocus class="form-control" type="text" name="summary" placeholder="Event Name">
+      </div>
+      <div class="form-group">
+        <input autofocus class="form-control" type="text" name="location" placeholder="Event Location">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="description" placeholder="Description">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="syear" placeholder="Start Year (E.g. 2024)">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="smonth" placeholder="Start Month (E.g. 04 for April)">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="sday" placeholder="Start Day (E.g. 01)">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="eyear" placeholder="End Year (E.g. 2024)">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="emonth" placeholder="End Month (E.g. 04 for April)">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="eday" placeholder="End Day (E.g. 01)">
+    </div>
+    <div class="form-group">
+      <input autofocus class="form-control" type="text" name="timezone" placeholder="Time Zone">
+    </div>
+
+      <input class="btn btn-primary" type="submit" value="calendar">
+  </form>
+
+
+   <script src="../../static/script.js"></script>
 
 {% endblock %}

@@ -37,6 +37,25 @@ def homepage(request):
     return render(request, "courses/homepage.html")
 
 def calendar(request):
-    results = test_calendar()
-    context = {"results": results}
-    return render(request, "courses/coursecal.html", context)
+    # summary, location, description, syear, smonth, sday, eyear, emonth, eday, timezone
+    if request.method == "POST":
+        summary = request.POST["summary"]
+        location = request.POST["location"]
+        description = request.POST["description"]
+        s_year = request.POST["syear"]
+        s_month = request.POST["smonth"]
+        s_day = request.POST["sday"]
+        e_year = request.POST["eyear"]
+        e_month = request.POST["emonth"]
+        e_day = request.POST["eday"]
+        timezone = request.POST["timezone"]
+
+        results = test_calendar(summary, location, description, s_year, s_month, s_day, e_year, e_month, e_day, timezone)
+        context = {"results": results}
+
+        return render(request, "courses/coursecal.html", context)
+    else:
+        results = []
+        return render(request, "courses/coursecal.html", {
+            "results":results
+        })

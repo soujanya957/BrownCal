@@ -8,7 +8,7 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = './google-credentials.json'
 
 
-def test_calendar():
+def test_calendar(summary, location, description, syear, smonth, sday, eyear, emonth, eday, timezone):
     print("RUNNING TEST_CALENDAR()")
 
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -16,16 +16,16 @@ def test_calendar():
 
     # CREATE A NEW EVENT
     new_event = {
-    'summary': "Ben Hammond Tech's Super Awesome Event",
-    'location': 'Denver, CO USA',
-    'description': 'https://benhammond.tech',
+    'summary': summary,
+    'location': location,
+    'description': description,
     'start': {
-        'date': f"{datetime.date.today()}",
-        'timeZone': 'America/New_York',
+        'date': f"{datetime.date(int(syear), int(smonth), int(sday))}",
+        'timeZone': timezone,
     },
     'end': {
-        'date': f"{datetime.date.today() + datetime.timedelta(days=3)}",
-        'timeZone': 'America/New_York',
+        'date': f"{datetime.date(int(eyear), int(emonth), int(eday))}",
+        'timeZone': timezone,
     },
     }
     service.events().insert(calendarId=CAL_ID, body=new_event).execute()

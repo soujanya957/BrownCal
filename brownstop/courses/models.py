@@ -24,3 +24,10 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+class Event(models.Model):
+    summary = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    description = models.TextField()
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
