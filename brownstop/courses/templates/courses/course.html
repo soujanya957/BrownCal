@@ -1,0 +1,31 @@
+{% extends "courses/layout.html" %}
+
+{% block body %}
+    <h1>Course {{ course.c_code }}</h1>
+    <ul>
+        <li>Course name: {{ course.c_name }}</li>
+        <li>Course location: {{ course.c_loc }}</li>
+    </ul>
+
+    <h1>Students</h1>
+    <ul>
+        {% for student in students %}
+            <li>{{ student }}</li>
+        {% empty %}
+            <li>No Students</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add to Cal</h2>
+    <form action="{% url 'addtocal' course.c_code %}" method="post">
+        {% csrf_token %}
+        <select name="student">
+            {% for student in non_students %}
+                <option value="{{ student.id }}">{{ student }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
+    <a href="{% url 'index' %}">Back to Course List</a>
+{% endblock %}
