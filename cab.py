@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+import time
 
 
 def open_and_sign_in(driver, website_url):
@@ -62,6 +63,8 @@ def enter_login_details(driver, username, password):
 
         driver.switch_to.default_content()
 
+        time.sleep(10)
+        driver.switch_to.window(main_page)
 
 
 
@@ -75,22 +78,22 @@ def enter_login_details(driver, username, password):
 # Example usage
 website_url = "https://cab.brown.edu/"
 
-login_username = ""  # user input
-login_password = ""  # user password
+login_username = "sgsaab"
+login_password = "Simba19Pepper47?"
 
 # Start a new instance of Chrome web browser
 driver = webdriver.Chrome()
 
-try:
-    # Call the function to open the website and sign in
-    open_and_sign_in(driver, "https://cab.brown.edu/")
-
-    # Call the function to enter login details
-
-    # Keep the browser open for inspection
-    input("Press Enter to quit.")
-
-finally:
-    # Close the browser
-    driver.quit()
+# try:
+#     # Call the function to open the website and sign in
+#     open_and_sign_in(driver, "https://cab.brown.edu/")
+#
+#     # Call the function to enter login details
+#
+#     # Keep the browser open for inspection
+#     input("Press Enter to quit.")
+#
+# finally:
+#     # Close the browser
+#     driver.quit()
 
