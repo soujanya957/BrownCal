@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os 
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -143,3 +144,8 @@ LOGIN_REDIRECT_URL = "users:account"
 LOUGOUT_REDIRECT_URL = "users:sign-in"
 
 BASE_COUNTRY = "US"
+
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
