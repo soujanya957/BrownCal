@@ -18,15 +18,18 @@
         </div>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                <a class="nav-link" href="{% url 'homepage' %}">Home</a>
             </li>
             {% if user.is_authenticated %}
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Course Tracker</a>
+                    <a class="nav-link" href="{% url 'tracker' %}">Course Tracker</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'calendar' %}">Course Calendar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">All Courses</a>
+                    <a class="nav-link" href="{% url 'index' %}">All Courses</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Log Out</a>

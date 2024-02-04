@@ -12,6 +12,8 @@ from .models import User
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
+    else:
+        return HttpResponseRedirect(reverse("userindex"))
 
 def login_view(request):
     if request.method == "POST":
@@ -24,7 +26,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("homepage"))
         else:
             return render(request, "users/login.html", {
                 "message": "Invalid username and/or password."
